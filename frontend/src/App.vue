@@ -1,26 +1,28 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app">
+    <h1>Vue.js + Express Template</h1>
+    <button @click="fetchMessage">Get Message from Backend</button>
+    <p>{{ message }}</p>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+  data() {
+    return {
+      message: '',
+    };
+  },
+  methods: {
+    async fetchMessage() {
+      try {
+        const response = await fetch('http://localhost:3000');
+        const data = await response.json();
+        this.message = data.message;
+      } catch (error) {
+        console.error('Error fetching message:', error);
+      }
+    },
+  },
+};
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>

@@ -4,7 +4,10 @@
   "description": "��#\u0000 \u0000c\u0000o\u0000m\u0000p\u0000o\u0000u\u0000n\u0000d\u0000_\u0000c\u0000a\u0000l\u0000c\u0000u\u0000l\u0000a\u0000t\u0000o\u0000r\u0000\r\u0000 \u0000",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:backend": "node backend/index.js",
+    "start:frontend": "cd frontend && npm run serve",
+    "start": "concurrently \"npm run start:backend\" \"npm run start:frontend\""
   },
   "repository": {
     "type": "git",
@@ -20,8 +23,5 @@
     "body-parser": "^1.20.3",
     "cors": "^2.8.5",
     "express": "^4.21.2"
-  },
-  "devDependencies": {
-    "concurrently": "^9.1.2"
   }
 }
